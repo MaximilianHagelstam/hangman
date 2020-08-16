@@ -1,10 +1,42 @@
 import java.util.Scanner;
+import java.io.*;
 
 public class Hangman {
-    private static String[] words = {"word", "hello", "world"};
-    private static String word = words[(int) (Math.random() * words.length)];
+    private static String word;
+
+    // Assigns word to getWord return
+    static {
+        try {
+            word = getWord();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     private static String asterisk = new String(new char[word.length()]).replace("\0", "*");
     private static int count = 0;
+
+    // Returns random word from words.txt
+    public static String getWord() throws IOException {
+        String text = "";
+        int lineNumber;
+
+        FileReader readfile = new FileReader("D:\\Code\\Java\\hagnman\\words.txt");
+        BufferedReader readbuffer = new BufferedReader(readfile);
+
+        int max = 999;
+        int min = 1;
+        int range = max - min + 1;
+        int rand = (int) (Math.random() * range) + min;
+
+        for (lineNumber = 1; lineNumber < 999; lineNumber++) {
+            if (lineNumber == rand) {
+                text = readbuffer.readLine();
+            } else
+                readbuffer.readLine();
+        }
+        return text;
+    }
 
     public static void hang(String guess) {
         StringBuilder newAsterisk = new StringBuilder();
@@ -29,6 +61,7 @@ public class Hangman {
         }
     }
 
+    // Creates graphic for when you guess wrong
     public static void hangmanImage() {
         switch (count) {
             case 1 -> {
