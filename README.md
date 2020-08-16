@@ -12,7 +12,7 @@ The purpose of this project was to practise java fundamentals.
 The purpose of this project was not necessarily to learn something new, but I still learned a couple of new things:
  - Reading text files
  - Generating a random integer within a range
- - IO
+ - I/O
  
 I also practised things I already knew:
 - If-else statements
